@@ -24,8 +24,6 @@ thing_name = os.environ['THING_NAME']
 
 def make_picture():
 
-    client.publish(topic='picture/status', payload='About to take picture')
-
     try:
 
         now = datetime.datetime.now()
@@ -36,8 +34,6 @@ def make_picture():
         # Camera warm-up time
         sleep(2)
         camera.capture('/output/{0:%Y%m%d%H%M%S}.png'.format(now))
-
-        client.publish(topic='picture/status', payload='Picture taken!')
         s3 = boto3.resource('s3')
 
         # s3.meta.client.upload_file('/output/lambda-image.png',
