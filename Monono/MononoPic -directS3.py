@@ -1,26 +1,4 @@
-Skip to content
-Search or jump to…
 
-Pull requests
-Issues
-Marketplace
-Explore
-
-@yuuparrow
-yuuparrow
-/
-train
-1
-00
- Code Issues 0 Pull requests 0 Actions Projects 0 Wiki Security Insights Settings
-train/MononoPic -directS3.py
-@yuuparrow yuuparrow Update MononoPic -directS3.py
-a1a89b7 1 hour ago
-58 lines (40 sloc)  1.41 KB
-
- Code navigation is available for this repository but data for this commit does not exist.
-
-Learn more or give us feedback
 import greengrasssdk
 import platform
 import time
@@ -78,15 +56,3 @@ def make_picture():
 
 #上記の関数を実行
 make_picture()
-© 2020 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
