@@ -6,6 +6,8 @@ import picamera
 import boto3
 import os
 from time import sleep
+import datetime
+from test.test_zipimport import NOW
 
 # Creating a greengrass core sdk client
 client = greengrasssdk.client('iot-data')
@@ -25,21 +27,21 @@ def make_picture():
 
     try:
 
-
+        now = datetime.datetime.now()
         camera = picamera.PiCamera()
         camera.resolution = (1024, 1024)
         camera.brightness = 70
         camera.start_preview()
         # Camera warm-up time
         sleep(2)
-        camera.capture('/output/lambda-image.png')
+        camera.capture('/output/{0:%Y%m%d%H%M%S}.png'.format(now))
 
         client.publish(topic='picture/status', payload='Picture taken!')
         s3 = boto3.resource('s3')
 
         # s3.meta.client.upload_file('/output/lambda-image.png',
         # 'roeland-greengrass', 'image.png')
-        s3.meta.client.upload_file('/output/lambda-image.png', bucket, 'image.png')
+        s3.meta.client.upload_file('/output/{0:%Y%m%d%H%M%S}.png'.format(now), bucket, 'image.png')
 #         s3.Object("バケット名","S3上での画像名").upload_file('ローカル画像のパス')
 
     except Exception as e:
@@ -53,3 +55,4 @@ def make_picture():
 
 #上記の関数を実行
 make_picture()
+
