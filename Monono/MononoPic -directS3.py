@@ -31,7 +31,7 @@ def make_picture():
         now = datetime.datetime.now()
         camera = picamera.PiCamera()
         camera.resolution = (1024, 1024)
-        camera.brightness = 70
+        camera.brightness = 60
         camera.start_preview()
         # Camera warm-up time
         sleep(2)
