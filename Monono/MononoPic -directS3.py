@@ -23,13 +23,13 @@ thing_name = os.environ['THING_NAME']
 
 
 def make_picture():
-
+    
     try:
-
         now = datetime.datetime.now()
         camera = picamera.PiCamera()
         camera.resolution = (1024, 1024)
         camera.brightness = 60
+        camera.rotation = 180
         camera.start_preview()
         # Camera warm-up time
         sleep(2)
