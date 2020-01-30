@@ -38,7 +38,7 @@ my_platform = platform.platform()
 class Camera(object):
     #写真を撮る
     def capture_image(self):
-        camera = picamera/PiCamera()
+        camera = picamera.PiCamera()
         imageData = StringIO.StringIO()
 
         #解像度の設定
